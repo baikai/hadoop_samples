@@ -6,8 +6,8 @@ package com.asiainfo.bdx.ocdp;
 public class HadoopSamplesTest {
 
     public static final void main(String[] args){
-        /**
-        HDFSClient hdfsClient = new HDFSClient("103.235.243.145", "8020", "ocdp");
+
+        HDFSClient hdfsClient = new HDFSClient("hdfs namenode ip/hostname", "rpc port", "hdfs super user");
         try{
             System.out.println("Creare hdfs folder.");
             hdfsClient.createFolder("/testhdfs");
@@ -18,8 +18,8 @@ public class HadoopSamplesTest {
         }catch (Exception e){
             e.printStackTrace();
         }
-         **/
-        HiveClient hiveClient = new HiveClient("103.235.243.145", "10000", "ocdp");
+
+        HiveClient hiveClient = new HiveClient("hive server2 ip/hostname", "10000", "hive user", "");
         try{
             System.out.println("Create hive database.");
             hiveClient.createDataBase("testhive");

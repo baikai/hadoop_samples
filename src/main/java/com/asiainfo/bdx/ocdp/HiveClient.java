@@ -18,9 +18,12 @@ public class HiveClient {
 
     private String superUser;
 
-    public HiveClient(String hiveHost, String hivePort, String user){
+    private String password;
+
+    public HiveClient(String hiveHost, String hivePort, String user, String pwd){
         this.hiveJDBCUrl = "jdbc:hive2://" + hiveHost + ":" + hivePort + "/default";
         this.superUser = user;
+        this.password = pwd;
     }
 
     /**
@@ -31,7 +34,7 @@ public class HiveClient {
     public void createDataBase(String databaseName) throws Exception{
         try{
             Class.forName(this.driverName);
-            this.conn = DriverManager.getConnection(this.hiveJDBCUrl, this.superUser, "");
+            this.conn = DriverManager.getConnection(this.hiveJDBCUrl, this.superUser, this.password);
             Statement stmt = conn.createStatement();
             stmt.execute("create database " + databaseName);
         }catch (ClassNotFoundException e){
@@ -54,7 +57,7 @@ public class HiveClient {
     public void deleteDataBase(String databaseName) throws Exception{
         try{
             Class.forName(this.driverName);
-            this.conn = DriverManager.getConnection(this.hiveJDBCUrl, this.superUser, "");
+            this.conn = DriverManager.getConnection(this.hiveJDBCUrl, this.superUser, this.password);
             Statement stmt = conn.createStatement();
             stmt.execute("drop database " + databaseName);
         }catch (ClassNotFoundException e){

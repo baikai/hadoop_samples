@@ -11,7 +11,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk/
 
 WORKDIR /root/hadoop
 
-RUN git clone git@github.com:baikai/hadoop_samples.git && \
+RUN git clone https://github.com/baikai/hadoop_samples.git && \
     cd hadoop_samples && \
     mvn clean package
 
